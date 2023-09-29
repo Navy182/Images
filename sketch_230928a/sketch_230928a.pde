@@ -1,5 +1,6 @@
 //Golbal Variables
 int  appWidth, appHeight;
+float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 //
 void setup() {
   //fullScreen(); //displayWidth, displayHeight
@@ -9,9 +10,13 @@ void setup() {
   appHeight = height;
   //
   // Population
+  backgroundImageX = appWidth*0;
+  backgroundImageY = appHeight*0;
+  backgroundImageWidth = appWidth*0;
+  backgroundImageHeight = appHeight*0;
   //
   //DIVs
-  rect();
+  rect(backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
   //
 } //End setup
 //
