@@ -1,7 +1,6 @@
 //Golbal Variables
 int  appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-PImage picBackground
 //
 void setup() {
   //fullScreen(); //displayWidth, displayHeight
@@ -13,9 +12,8 @@ void setup() {
   // Population
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
-  backgroundImageWidth = appWidth-1;
-  backgroundImageHeight = appHeight-1;
-  picBackground = loadImage("../images/Landscapes/fall-leaves-png-transparent-23.png/");
+  backgroundImageWidth = appWidth*0;
+  backgroundImageHeight = appHeight*0;
   //
   //DIVs
   rect(backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
@@ -23,7 +21,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
+  //image();
 } //End setup
 //
 void mousePressed() {} //End setup
