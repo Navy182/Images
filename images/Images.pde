@@ -4,10 +4,10 @@
 //Golbal Variables
 int  appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-PImage picBackground
-Boolean nightmode=false; //Note: clock and turn on automatically
+PImage picBackground;
+Boolean nightmode=false; //Note: clock will automatically turn on
 Boolean brightnessControl=false; //Note: ARROWS
-int brightnessNumber=255; //Range:1-255
+int brightnessNumber=128; //Range:1-255
 //
 void setup() {
   //fullScreen(); //displayWidth, displayHeight
@@ -17,10 +17,24 @@ void setup() {
   appHeight = height;
   //
   // Population
+  int hourNightMode = hour(); //24-hour clock
+  println(hourNightMode);
+  if ( hourNightMode>17 ) {
+    nightmode=true;
+  } else if ( hourNightMode<05 ) {
+    nightmode=true;
+  } else {
+    nightmode=false;
+  }
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth*0;
   backgroundImageHeight = appHeight*0;
+  String up = "..";
+  String open = "/";
+  String imagesPath = up + open;
+  String landScapeImage = "pictures/Landscape & Sqaure Images/";
+  picBackground = loadImage(imagesPath + landScapeImage + "fall-leaves-png-transparent-23.png/");
   //
   //DIVs
   rect(backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
@@ -54,9 +68,7 @@ void draw() {
   //
 } //End draw
 //
-void mousePressed() {} //End setup
-//
-void keyPressed() {} //End setup
+void keyPressed() {
   if ( key=='n' || key=='N' ) { //Nightmode, basic control is Boolean
     if ( nightmode==true ) {
       nightmode = false;
@@ -66,11 +78,15 @@ void keyPressed() {} //End setup
   }
   //Brightness: ARROWS activate brightnessControl, never off
   //NOTE: Nightmode does turn off
-  if ( [Special Key Bind] ) { //Brightness keybind
+  if ( key==CODED && keyCode==UP || keyCode==DOWN ) { //brightness keybind
     brightnessControl = true;
-    //CONTINUE HERE with brightness toggles
-  }
-    //
+  if ( key==CODED && keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber
+  if ( key==CODED && keyCode==DOWN ) brightnessNumber 
+    //CONTINUE HERE with brightness toggles 
+  } //<>//
+    println(brightnessNumber);
   } //End keyPressed
-  //
-// End MAIN Program
+//
+void mousePressed() {} // End MousePressed
+
+ // End MAIN Program
