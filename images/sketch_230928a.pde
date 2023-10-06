@@ -17,11 +17,24 @@ void setup() {
   appHeight = height;
   //
   // Population
+   int hourNightMode = hour(); //24-hour clock
+  println(hourNightMode);
+  if ( hourNightMode>17 ) {
+    nightmode=true;
+  } else if ( hourNightMode<05 ) {
+    nightmode=true;
+  } else {
+    nightmode=false;
+  }
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth*0;
   backgroundImageHeight = appHeight*0;
-  picBackground = loadImage("../../../images/Landscapes/fall-leaves-png-transparent-23.png/");
+  String up = "..";
+  String open = "/";
+  String imagesPath = up + open;
+  String landScapeImage = "pictures/Landscape & Sqaure Images/";
+  picBackground = loadImage(imagesPath + landScapeImage + "fall-leaves-png-transparent-23.png/");
   //
   //DIVs
   rect(backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
@@ -42,8 +55,8 @@ void draw() {
     //Empty ELSE
   }
    tint (255, brightnessNumber);
-  }
    println(brightnessNumber);
+  }
    //if ( nightmode==true ) tint ( 64, 64, 40 ); //Gray Scale: 1/2 tint (i.e 128/256=1/2)
   if ( nightmode==true ) {
     tint ( 64, 64, 40 );
@@ -53,7 +66,6 @@ void draw() {
     println(nightmode);
   }
   image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-  //
 } //End draw
 //
 void keyPressed() {
@@ -74,7 +86,7 @@ void keyPressed() {
   }
    //
    println(brightnessNumber);
-  }//End keyPressed
+  } //End keyPressed
   //
 void mousePressed() {
   //When mouse is pressed
