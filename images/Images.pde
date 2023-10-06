@@ -1,4 +1,4 @@
- //Program Notes
+/* Program Notes
  - Finish Nightmode: medium and difficult
  */
 //Golbal Variables
