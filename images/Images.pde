@@ -4,7 +4,7 @@
 //Golbal Variables
 int  appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-float leavesX, leavesY, leavesHeight, leavesWidth; 
+float leavesX, leavesY, leavesHeight, leavesWidth;
 float flowerX, flowerY, flowerHeight, flowerWidth;
 PImage picBackground, leavesForeground, flowerPortrait;
 Boolean nightmode=false; //Note: clock will automatically turn on
@@ -31,7 +31,7 @@ void setup() {
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
-  backgroundImageHeight = appHeight-1; 
+  backgroundImageHeight = appHeight-1;
   leavesX = appWidth*1/14;
   leavesY = appHeight*1/8;
   leavesHeight = appHeight*1/4; // 2/8
@@ -46,12 +46,12 @@ void setup() {
   String up = "..";
   String open = "/";
   String imagesPath = up + open;
-  String landScapeImage = "pictures/Landscape & Sqaure Images/";
+  String landScapeImage = "pictures/Landscapes/";
   String portraitImage = "pictures/Portrait";
   String fallImage = "fall-leaves-png-transparent-23.png";
   String flowerImage = "download.jpg";
   picBackground = loadImage(imagesPath + landScapeImage + fallImage); //Concatenation
-  //leavesForeground = loadImage();
+  leavesForeground = loadImage( imagesPath + landScapeImage + fallImage );
   //flowerPortrait = loadImage();
   //
   //DIVs
@@ -85,33 +85,33 @@ void draw() {
       //println(nightmode);
     }
     image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-      image( leavesForeground, leavesX, leavesY, leavesHeight, leavesWidth ); //My image
-      image( flowerPortrait, flowerX, flowerY, flowerHeight, flowerWidth ); //Portrait image
+    image( leavesForeground, leavesX, leavesY, leavesHeight, leavesWidth ); //My image
+    image( flowerPortrait, flowerX, flowerY, flowerHeight, flowerWidth ); //Portrait image
   }
-      //
-    } //End draw
-    //
-    void keyPressed() {
-      //
-      if ( key=='n' || key=='N' ) {//Nightmode, basic control is Boolean
-        if ( nightmode==true ) {
-          nightmode = false;
-        } else {
-          nightmode = true;
-        }
-      }
-      //Brightness: ARROWS activate brightnessControl, never off
-      //NOTE: Nightmode does turn off
-      if ( key==CODED && keyCode==UP || keyCode==DOWN ) { //brightness keybind
-        brightnessControl = true;
-        if ( key==CODED && keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber
-        if ( key==CODED && keyCode==DOWN ) brightnessNumber-- ;
-        //CONTINUE HERE with brightness toggles
-      }
-      println(brightnessNumber);
-    } //End keyPressed
-    //
-    void mousePressed() {
-    } // End MousePressed
+  //
+} //End draw
+//
+void keyPressed() {
+  //
+  if ( key=='n' || key=='N' ) {//Nightmode, basic control is Boolean
+    if ( nightmode==true ) {
+      nightmode = false;
+    } else {
+      nightmode = true;
+    }
+  }
+  //Brightness: ARROWS activate brightnessControl, never off
+  //NOTE: Nightmode does turn off
+  if ( key==CODED && keyCode==UP || keyCode==DOWN ) { //brightness keybind
+    brightnessControl = true;
+    if ( key==CODED && keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber
+    if ( key==CODED && keyCode==DOWN ) brightnessNumber-- ;
+    //CONTINUE HERE with brightness toggles
+  }
+  println(brightnessNumber);
+} //End keyPressed
+//
+void mousePressed() {
+} // End MousePressed
 
-    // End MAIN Program
+// End MAIN Program
