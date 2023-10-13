@@ -4,7 +4,9 @@
 //Golbal Variables
 int  appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-PImage picBackground, leavesForeground, blackflowersPortrait;
+float leavesX, leavesY, leavesHeight, leavesWidth; 
+float flowerX, flowerY, flowerHeight, flowerWidth;
+PImage picBackground, leavesForeground, flowerPortrait;
 Boolean nightmode=false; //Note: clock will automatically turn on
 Boolean brightnessControl=false; //Note: ARROWS
 int brightnessNumber=128; //Range:1-255
@@ -29,26 +31,38 @@ void setup() {
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
-  backgroundImageHeight = appHeight-1;
+  backgroundImageHeight = appHeight-1; 
+  leavesX = appWidth*1/14;
+  leavesY = appHeight*1/8;
+  leavesHeight = appHeight*1/4; // 2/8
+  leavesWidth = appWidth*1/7; // 2/14
+  flowerX = leavesX;
+  flowerY = appHeight*5/8;
+  flowerHeight = leavesHeight;
+  flowerWidth = leavesWidth;
+  //Aspect Ratio Caluculations
+  //Compare dimension to get larger dimension
   //Concatenation of Pathways
   String up = "..";
   String open = "/";
   String imagesPath = up + open;
   String landScapeImage = "pictures/Landscape & Sqaure Images/";
-  picBackground = loadImage(imagesPath + landScapeImage + "fall-leaves-png-transparent-23.png/");
-  leavesForground = loadImage();
-  blackflowersPortrait = loadImage();
+  String portraitImage = "pictures/Portrait";
+  String fallImage = "fall-leaves-png-transparent-23.png";
+  String flowerImage = "download.jpg";
+  picBackground = loadImage(imagesPath + landScapeImage + fallImage); //Concatenation
+  //leavesForeground = loadImage();
+  //flowerPortrait = loadImage();
   //
   //DIVs
   //rect ( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-  rect();
-  rect();
-  //
+  //rect ( leavesX, leavesY, leavesHeight, leavesWidth );
+  //rect ( flowerX, flowerY, flowerHeight, flowerWidth );
 } //End setup
 //
 void draw() {
   //background(255); //built in BUG, 1 pixel
-  //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+  rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
   //println(BrightnessControl, nightmode);
   //
   if ( brightnessControl==true ) tint (255, brightnessNumber);
@@ -71,9 +85,9 @@ void draw() {
       //println(nightmode);
     }
     image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-    {
-      //image( leavesForeground, ); //My image
-      //image( blackflowersPortrait, ); //Portrait image
+      image( leavesForeground, leavesX, leavesY, leavesHeight, leavesWidth ); //My image
+      image( flowerPortrait, flowerX, flowerY, flowerHeight, flowerWidth ); //Portrait image
+  }
       //
     } //End draw
     //
