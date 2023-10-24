@@ -5,6 +5,7 @@
 int  appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 float leavesX, leavesY, leavesHeight, leavesWidth;
+float leavesXRect, leavesYRect, leavesHeightRect, leavesWidthRect, flowerXRect, flowerYRect, flowerHeightRect, flowerWidthRect;
 float flowerX, flowerY, flowerHeight, flowerWidth;
 PImage picBackground, leavesForeground, flowerPortrait;
 //Boolean nightmode=false; //Note: clock will automatically turn on
@@ -48,21 +49,28 @@ void setup() {
   float rectDimesionMemory = 0.0; //Assigned ZERO b/c IF;
   if( leavesWidth >= leavesHeight ) { //leaves Image if Landscape
   //Comparsion Verification
-  aspectRatio = float(leavesHeight) / float(leavesWidth); // smaller/larger=0 if int, use caasting
+  aspectRatio = leavesWidth / leavesHeight; // smaller/larger=0 if int, use casting
   //Memory of smaller side
-  leavesWidth = leavesWidthRect;
-  leavesHeight = aspectRatio * leavesWidth;
+  leavesHeight = leavesHeightRect;
+  leavesWidth = aspectRatio * leavesHeight;
+  //if () {} //ERROR Catch if leavesheight > bikeheightRect
   println("LEAVES is Landscape");
   } else { //leaves image if portrait
   //Comparsion Verification
   println("LEAVES is Portrait");
-  } //End IF 
-  if( flowerWidth >= flowerHeight ) { //flower Image if landscapes
+  } //End IF
+  
+  if( flowerWidth > flowerHeight ) { //flower Image if landscapes
   //Comparsion Verification
+  aspectRatio = flowerWidth / flowerHeight; // smaller/larger=0 if int, use casting
+  //Memory of smaller side
+  flowerHeight = flowerHeightRect;
+  flowerWidth = aspectRatio * flowerHeight;
   println("FLOWER is Landscape");
   } else { //flower Image of portrait
   //Comparsion Verification
   println("FLOWER is Portrait");
+  //Repeat Aspect Ratio
   }//End IF
   
   //Original Aspect Ratios of Images to Change
@@ -111,9 +119,8 @@ void draw() {
       //println(nightmode);
    // }
     image( picBackground, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-    image( leavesForeground, leavesXrect, leavesYrect, leavesHeight, leavesWidth ); //My image
-    image( flowerPortrait, flowerXrect, flowerYrect, flowerHeight, flowerWidth ); //Portrait image
-  //}
+    image( leavesForeground, leavesXRect, leavesYRect, leavesHeight, leavesWidth ); //My image
+    image( flowerPortrait, flowerXRect, flowerYRect, flowerHeight, flowerWidth ); //Portrait image
   //
 } //End draw
 //
